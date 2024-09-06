@@ -60,41 +60,10 @@ int main(void)
     long long n1, n2, n3, n4;
     cin >> p >> n1 >> n2 >> n3 >> n4;
 
-    if (solve(n1))
-    {
-        cout << "1 ";
-    }
-    else
-    {
-        cout << "0 ";
-    }
-
-    if (solve(n2))
-    {
-        cout << "1 ";
-    }
-    else
-    {
-        cout << "0 ";
-    }
-
-    if (solve(n3))
-    {
-        cout << "1 ";
-    }
-    else
-    {
-        cout << "0 ";
-    }
-
-    if (solve(n4))
-    {
-        cout << "1 ";
-    }
-    else
-    {
-        cout << "0 ";
-    }
+    cout << (solve(n1) ? "1 " : "0 ");
+    cout << (solve(n2) ? "1 " : "0 ");
+    cout << (solve(n3) ? "1 " : "0 ");
+    cout << (solve(n4) ? "1 " : "0 ");
 
     return 0;
 }

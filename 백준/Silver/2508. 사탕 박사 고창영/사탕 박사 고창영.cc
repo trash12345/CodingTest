@@ -27,21 +27,11 @@ int main(void)
         {
             for (int j = 0; j < c; j++)
             {
-                // 사탕 못만드는 좌표 4개 (0,0) (0,c-1), (r-1,0) (r-1,c-1)
-                if ((i == 0 && j == 0) || (i == 0 && j == c - 1) || (i == r - 1 && j == 0) || (i == r - 1 && j == c - 1))
-                {
-                    continue;
-                }
-
-                if (candy[i][j] == 'o' && (j == 0 || j == c - 1) && candy[i - 1][j] == 'v' && candy[i + 1][j] == '^')
+                if (i > 1 && candy[i - 2][j] == 'v' && candy[i - 1][j] == 'o' && candy[i][j] == '^')
                 {
                     cnt++;
                 }
-                else if (candy[i][j] == 'o' && (i == 0 || i == r - 1) && candy[i][j - 1] == '>' && candy[i][j + 1] == '<')
-                {
-                    cnt++;
-                }
-                else if (candy[i][j] == 'o' && ((candy[i][j - 1] == '>' && candy[i][j + 1] == '<') || (candy[i - 1][j] == 'v' && candy[i + 1][j] == '^')))
+                if (j > 1 && candy[i][j - 2] == '>' && candy[i][j - 1] == 'o' && candy[i][j] == '<')
                 {
                     cnt++;
                 }

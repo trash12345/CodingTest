@@ -8,27 +8,32 @@ int main(void)
     cin.tie(0);
 
     int N, M;
-    int cnt = 0;
+    int ans = 0;
     cin >> N >> M;
 
-    string P = "I";
     string S;
     cin >> S;
 
-    for (int i = 0; i < N; i++)
-    {
-        P += "OI";
-    }
-
     for (int i = 0; i < S.size(); i++)
     {
-        if (S.substr(i, P.size()) == P)
+        int cnt = 0;
+        if (S[i] == 'I')
         {
-            cnt++;
+            // 문자열 체크
+            while (S[i + 1] == 'O' && S[i + 2] == 'I')
+            {
+                cnt++;
+                if (cnt == N)
+                {
+                    cnt--;
+                    ans++;
+                }
+                i += 2;
+            }
         }
     }
 
-    cout << cnt;
+    cout << ans;
 
     return 0;
 }

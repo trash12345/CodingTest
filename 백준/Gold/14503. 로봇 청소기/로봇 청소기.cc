@@ -47,11 +47,6 @@ void dfs()
     int rnx = r + dx[rnxt];
     int rny = c + dy[rnxt];
 
-    if (rnx < 0 || rnx >= N || rny < 0 || rny >= M)
-    {
-        return;
-    }
-
     if (board[rnx][rny] == 0)
     {
         r = rnx;

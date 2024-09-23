@@ -10,11 +10,10 @@ int main(void)
     int N, K;
     cin >> N >> K;
 
-    vector<pair<int, int>> V;
-    vector<int> res(N, 0);
-    priority_queue<int, vector<int>, greater<int>> pq;
+    vector<int> res(N + 1, 0);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, less<pair<int, int>>> pq;
 
-    for (int i = 0; i < K; i++)
+    for (int i = 1; i <= K; i++)
     {
         int c;
         cin >> c;
@@ -25,37 +24,26 @@ int main(void)
             return 0;
         }
 
-        V.push_back({c, i + 1});
-    }
-
-    sort(V.begin(), V.end());
-
-    // 반 끼워넣고 나머지는 아무렇게
-    for (int i = 0; i < V.size(); i++)
-    {
-        for (int j = 0; j < V[i].first; j++)
+        for (int j = 0; j < c; j++)
         {
-            pq.push(V[i].second);
+            pq.push({c, i});
         }
     }
 
+    // 짝수
     for (int i = 0; i < (N + 1) / 2; i++)
     {
-        res[i * 2] = pq.top();
+        res[i * 2] = pq.top().second;
         pq.pop();
     }
 
     int len = pq.size();
 
+    // 홀수
     for (int i = 1; i <= len; i++)
     {
-        res[i * 2 - 1] = pq.top();
+        res[i * 2 - 1] = pq.top().second;
         pq.pop();
-
-        if (pq.empty())
-        {
-            break;
-        }
     }
 
     for (int i = 0; i < N; i++)

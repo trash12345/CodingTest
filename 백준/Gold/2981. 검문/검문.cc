@@ -15,40 +15,35 @@ int main(void)
     int N;
     cin >> N;
 
-    vector<int> V;
+    vector<int> V(N);
+    set<int> div;
 
     for (int i = 0; i < N; i++)
     {
-        int num;
-        int tmp;
-        cin >> num;
+        cin >> V[i];
+    }
 
-        if (i >= 1)
+    sort(V.begin(), V.end());
+
+    int res = V[1] - V[0];
+
+    for (int i = 2; i < N; i++)
+    {
+        res = gcd(res, V[i] - V[i - 1]);
+    }
+
+    for (int i = 1; i * i <= res; i++)
+    {
+        if (res % i == 0)
         {
-            V.push_back(abs(tmp - num));
+            div.insert(i);
+            div.insert(res / i);
         }
-
-        tmp = num;
     }
 
-    int ans = INT_MAX;
-
-    for (int i = 0; i < N - 1; i++)
+    for (auto i : div)
     {
-        int res = gcd(V[i], V[i + 1]);
-
-        ans = min(ans, gcd(V[i + 1], res));
-    }
-
-    if (ans == INT_MAX)
-    {
-        cout << 1;
-        return 0;
-    }
-
-    for (int i = 2; i <= ans; i++)
-    {
-        if (ans % i == 0)
+        if (i != 1)
         {
             cout << i << " ";
         }

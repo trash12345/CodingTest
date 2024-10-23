@@ -14,10 +14,10 @@ int main(void)
 
     while (T--)
     {
-        int N, M;
+        long long N, M;
         cin >> N >> M;
 
-        int sum = 0;
+        long long sum = 0;
 
         fill(alliance, alliance + 5001, 0);
 
@@ -32,10 +32,10 @@ int main(void)
 
         for (int i = 1; i <= N; i++)
         {
-            sum += alliance[i] * (N - 1 - alliance[i]);
+            sum += 1LL * alliance[i] * (N - 1 - alliance[i]);
         }
 
-        cout << N * (N - 1) * (N - 2) / 6 - sum / 2 << "\n";
+        cout << 1LL * N * (N - 1) * (N - 2) / 6 - sum / 2 << "\n";
     }
 
     return 0;

@@ -1,0 +1,10 @@
+push 4;input
+print;jump 10
+jump 6
+push -1;*
+push 1;jump 3
+pop;jump 4
+print;jump 10
+pop;*
+push 3
+input;dup
